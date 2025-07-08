@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "No dependencies to install for static website"
+  build:
+    commands:
+      - echo "No build steps required for static HTML/CSS"
+  post_build:
+    commands:
+      - echo "Deploying static website to S3..."
+      - aws s3 cp . s3://banita-static-website/ --recursive
+
+artifacts:
+  files:
+    - '**/*'
