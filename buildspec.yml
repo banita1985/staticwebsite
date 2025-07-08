@@ -11,6 +11,8 @@ phases:
     commands:
       - echo "Deploying static website to S3..."
       - aws s3 cp . s3://banita-static-website/ --recursive
+      - echo "Creating CloudFront invalidation..."
+      - aws cloudfront create-invalidation --distribution-id E3SJXVBGGQQ71P --paths "/*"
 
 artifacts:
   files:
